@@ -1,6 +1,6 @@
 {
   "name": "krautspace",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CLI for the Krautspace Hackerspace in Jena",
   "main": "lib/krautspace",
   "bin": {
