@@ -1,0 +1,34 @@
+{
+  "name": "krautspace",
+  "version": "1.0.0",
+  "description": "CLI for the Krautspace Hackerspace in Jena",
+  "main": "lib/krautspace",
+  "bin": {
+    "krautspace": "krautspace.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhermsmeier/krautspace.git"
+  },
+  "keywords": [
+    "krautspace",
+    "hackerspace",
+    "jena"
+  ],
+  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jhermsmeier/krautspace/issues"
+  },
+  "homepage": "https://github.com/jhermsmeier/krautspace",
+  "dependencies": {
+    "chalk": "^0.5.1",
+    "moment": "^2.8.3",
+    "tab": "^0.1.0",
+    "yargs": "^1.3.1"
+  },
+  "devDependencies": {}
+}
