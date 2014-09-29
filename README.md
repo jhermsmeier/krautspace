@@ -78,3 +78,62 @@ Krautspace.getStatus( function( error, status ) {
   }
 }
 ```
+
+```js
+Krautspace.getFeed( function( error, feed ) {
+  console.log( feed )
+})
+```
+
+```js
+{
+  type: 'atom',
+  title: 'Raumstatus für Krautspace',
+  subtitle: 'Zeigt an ob der Raum geöffnet oder geschlossen ist.',
+  link: [{
+    rel: 'alternate',
+    type: 'text/html',
+    href: 'https://www.krautspace.de/'
+  }, {
+    rel: 'self',
+    type: 'application/atom+xml',
+    href: 'https://status.krautspace.de/feed.xml'
+  }],
+  id: 'https://www.krautspace.de/',
+  updated: '2014-09-29T14:05:01+00:00',
+  generator: 'FeedCreator 1.8 (info@mypapit.net)',
+  items: [{
+    title: 'Krautspace ist seit 14:04 Uhr geöffnet',
+    link: {
+      rel: 'alternate',
+      type: 'text/html',
+      href: 'https://www.krautspace.de/'
+    },
+    published: '2014-09-29T14:04:02+00:00',
+    updated: '2014-09-29T14:04:02+00:00',
+    id: 'urn:uuid:11A8277C-E8FF-977A-97D8-6D9AA3661A46',
+    author: {
+      name: 'spaceapi2rss'
+    },
+    text: '\n     ',
+    summary: 'no summary'
+  }, {
+    title: 'Krautspace ist seit 19:29 Uhr geschlossen',
+    link: {
+      rel: 'alternate',
+      type: 'text/html',
+      href: 'https://www.krautspace.de/'
+    },
+    published: '2014-09-28T19:29:02+00:00',
+    updated: '2014-09-28T19:29:02+00:00',
+    id: 'urn:uuid:CD25CFEB-F33A-1745-6BA7-0CDA44430E89',
+    author: {
+      name: 'spaceapi2rss'
+    },
+    text: '\n     ',
+    summary: 'no summary'
+  },
+    ...
+  ]
+}
+```
