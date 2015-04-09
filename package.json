@@ -1,6 +1,6 @@
 {
   "name": "krautspace",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "API and CLI for the Krautspace Hackerspace in Jena",
   "license": "MIT",
   "keywords": [
@@ -30,6 +30,6 @@
     "url": "https://github.com/jhermsmeier/krautspace/issues"
   },
   "bin": {
-    "krautspace": "krautspace.js"
+    "krautspace": "bin/krautspace.js"
   }
 }
