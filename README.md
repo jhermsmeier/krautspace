@@ -1,8 +1,9 @@
-# Krautspace
-[![npm](http://img.shields.io/npm/v/krautspace.svg?style=flat)](https://npmjs.org/krautspace)
-[![npm downloads](http://img.shields.io/npm/dm/krautspace.svg?style=flat)](https://npmjs.org/krautspace)
+# krautspace
+[![npm](http://img.shields.io/npm/v/krautspace.svg?style=flat-square)](https://npmjs.com/krautspace)
+[![npm downloads](http://img.shields.io/npm/dm/krautspace.svg?style=flat-square)](https://npmjs.com/krautspace)
+[![build status](http://img.shields.io/travis/jhermsmeier/krautspace.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/krautspace)
 
-## Install via [npm](https://npmjs.org)
+## Install via [npm](https://npmjs.com)
 
 ```sh
 $ npm install --global krautspace
