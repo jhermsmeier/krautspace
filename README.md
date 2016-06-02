@@ -1,9 +1,11 @@
-# krautspace
-[![npm](http://img.shields.io/npm/v/krautspace.svg?style=flat-square)](https://npmjs.com/krautspace)
-[![npm downloads](http://img.shields.io/npm/dm/krautspace.svg?style=flat-square)](https://npmjs.com/krautspace)
-[![build status](http://img.shields.io/travis/jhermsmeier/krautspace.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/krautspace)
+# Krautspace
+[![npm](https://img.shields.io/npm/v/krautspace.svg?style=flat-square)](https://npmjs.com/package/krautspace)
+[![npm downloads](https://img.shields.io/npm/dm/krautspace.svg?style=flat-square)](https://npmjs.com/package/krautspace)
+[![build status](https://img.shields.io/travis/jhermsmeier/krautspace.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/krautspace)
 
-## Install via [npm](https://npmjs.com)
+CLI for the Krautspace Hackerspace in Jena
+
+## Install via [npm](https://npmjs.com/package/krautspace)
 
 ```sh
 $ npm install --global krautspace
