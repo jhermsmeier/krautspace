@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var Krautspace = require( '../' )
 var color = require( 'chalk' )
-var moment = require( 'moment-timezone' )
+var moment = require( 'moment' )
 var tab = require( 'tab' )
 var util = require( 'util' )
 var log = console.log.bind( console )
@@ -101,8 +101,7 @@ function contact( status ) {
 function feed( data ) {
   
   var items = data.items.slice( 0, 7 ).map( function( item ) {
-    // var time = item.title.match( /(\d{1,2}:\d{1,2})/ )
-    var time = moment.tz( item.published, 'Atlantic/St_Helena' )
+    var time = moment( item.updated )
     var open = /geöffnet/i.test( item.title )
     return { open: open, time: time }
   })
