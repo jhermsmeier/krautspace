@@ -13,12 +13,12 @@ var options = require( 'yargs' )
   .boolean( 'help' )
   .describe( 'help', 'Display usage help' )
   .boolean( 'color' )
-  .describe( 'color', 'Force colored output (defaults to terminal color support)' )
+  .describe( 'color', 'Force colored output (defaults to term color support)' )
   .boolean( 'no-color' )
   .describe( 'no-color', 'Force non-colored output' )
   .example( 'status', 'Display short status information (default)' )
   .example( 'info', 'Display verbose information' )
-  // .example( 'events', 'Display upcoming calendar events' )
+  .example( 'events', 'Display upcoming calendar events' )
   .example( 'json', 'Output machine readable status data as JSON' )
   .alias({
     help: 'h',
@@ -46,15 +46,15 @@ function inspect( value ) {
 
 function FAIL( error ) {
   if( error != null ) {
-    
+
     var msg = [
       color.red( '[ERROR]' ),
       error.message
     ]
-    
+
     console.log( msg.join( ' ' ) )
     process.exit( 1 )
-    
+
   }
 }
 
@@ -71,7 +71,7 @@ function header( status ) {
 }
 
 function contact( status ) {
-  
+
   tab.emitTable({
     columns: [{
       label: '',
@@ -95,20 +95,20 @@ function contact( status ) {
       [ 'Location',     color.cyan( status.location.lat + ', ' + status.location.lon ) ],
     ]
   })
-  
+
 }
 
 function feed( data ) {
-  
+
   var items = data.items.slice( 0, 7 ).map( function( item ) {
     var time = moment( item.updated )
     var open = /geöffnet/i.test( item.title )
     return { open: open, time: time }
   })
-  
+
   var item, end
   var times = []
-  
+
   while( item = items.shift() ) {
     if( item.open ) {
       times.push([
@@ -123,7 +123,7 @@ function feed( data ) {
       ])
     }
   }
-  
+
   tab.emitTable({
     columns: [{
       label: '',
@@ -135,7 +135,7 @@ function feed( data ) {
     rowSeparator: '\n  ',
     rows: times
   })
-  
+
 }
 
 function displayJSON() {
@@ -165,8 +165,41 @@ function displayInfo() {
   })
 }
 
+function displayEvents() {
+  Krautspace.getEvents( function( error, events ) {
+
+    FAIL( error )
+
+    var daysFromNow = new Date( Date.now() + 7 * 24 * 60 * 60 * 1000 )
+    var currentDate = null
+
+    events = events.filter( function( event ) {
+        return event.date < daysFromNow
+      })
+      .forEach( function( event ) {
+
+          var date = moment( event.date ).format( 'DD.MM.YYYY, dddd' )
+          var time = moment( event.date ).format( 'HH:mm' )
+
+          if( date != currentDate ) {
+            currentDate = date
+            console.log( ' ', color.green( currentDate ) )
+            console.log( '' )
+          }
+
+          console.log( '   ', color.grey( time ), ' ', color.reset( event.title ) )
+          console.log( '           ', color.blue( event.url ) )
+          console.log( '           ', color.dim.grey( event.tags.join( ', ' ) ) )
+          console.log( '' )
+
+      })
+
+  })
+}
+
 switch( argv._.shift() ) {
   case 'json': displayJSON(); break
   case 'info': displayInfo(); break
+  case 'events': displayEvents(); break
   default: displayStatus(); break
 }
