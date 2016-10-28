@@ -141,7 +141,7 @@ function feed( data ) {
 function displayJSON() {
   Krautspace.getStatus( function( error, status ) {
     FAIL( error )
-    console.log( status )
+    console.log( JSON.stringify( status, null, 2 ) )
   })
 }
 
