@@ -1,9 +1,8 @@
 # Krautspace
 [![npm](https://img.shields.io/npm/v/krautspace.svg?style=flat-square)](https://npmjs.com/package/krautspace)
 [![npm downloads](https://img.shields.io/npm/dm/krautspace.svg?style=flat-square)](https://npmjs.com/package/krautspace)
-[![build status](https://img.shields.io/travis/jhermsmeier/krautspace.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/krautspace)
 
-CLI for the Krautspace Hackerspace in Jena
+CLI for the [Krautspace Hackerspace](https://kraut.space) in Jena
 
 ## Install via [npm](https://npmjs.com/package/krautspace)
 
@@ -16,17 +15,17 @@ $ npm install --global krautspace
 ```
 Usage: krautspace [options] [command]
 
-Examples:
-  status    Display short status information (default)
-  info      Display verbose information
-  json      Output machine readable status data as JSON
-
-
 Options:
-  --version, -v  Display version number
-  --help, -h     Display usage help
-  --color        Force colored output (defaults to terminal color support)
-  --no-color     Force non-colored output
+  --version, -v  Display version number                                [boolean]
+  --help, -h     Display usage help                                    [boolean]
+  --color        Force colored output (defaults to term color support) [boolean]
+  --no-color     Force non-colored output                              [boolean]
+
+Examples:
+  status  Display short status information (default)
+  info    Display verbose information
+  events  Display upcoming calendar events
+  json    Output machine readable status data as JSON
 ```
 
 ## Usage: Library API
@@ -36,6 +35,7 @@ var Krautspace = require( 'krautspace' )
 ```
 
 ```js
+// Space status & metadata
 Krautspace.getStatus( function( error, status ) {
   console.log( status )
 })
@@ -83,6 +83,7 @@ Krautspace.getStatus( function( error, status ) {
 ```
 
 ```js
+// Space status feed
 Krautspace.getFeed( function( error, feed ) {
   console.log( feed )
 })
@@ -91,52 +92,87 @@ Krautspace.getFeed( function( error, feed ) {
 ```js
 {
   type: 'atom',
+  id: 'https://status.krautspace.de/feed.xml',
   title: 'Raumstatus für Krautspace',
-  subtitle: 'Zeigt an ob der Raum geöffnet oder geschlossen ist.',
+  updated: '2016-10-28T00:34:01+00:00',
+  author: { name: 'SpaceAPI2Feed' },
   link: [{
+    href: 'https://status.krautspace.de/feed.xml',
+    rel: 'self'
+  }, {
+    href: 'https://status.krautspace.de/api',
     rel: 'alternate',
-    type: 'text/html',
-    href: 'https://www.krautspace.de/'
-  }, {
-    rel: 'self',
-    type: 'application/atom+xml',
-    href: 'https://status.krautspace.de/feed.xml'
+    type: 'application/json'
   }],
-  id: 'https://www.krautspace.de/',
-  updated: '2014-09-29T14:05:01+00:00',
-  generator: 'FeedCreator 1.8 (info@mypapit.net)',
-  items: [{
-    title: 'Krautspace ist seit 14:04 Uhr geöffnet',
-    link: {
-      rel: 'alternate',
-      type: 'text/html',
-      href: 'https://www.krautspace.de/'
-    },
-    published: '2014-09-29T14:04:02+00:00',
-    updated: '2014-09-29T14:04:02+00:00',
-    id: 'urn:uuid:11A8277C-E8FF-977A-97D8-6D9AA3661A46',
-    author: {
-      name: 'spaceapi2rss'
-    },
-    text: '\n     ',
-    summary: 'no summary'
-  }, {
-    title: 'Krautspace ist seit 19:29 Uhr geschlossen',
-    link: {
-      rel: 'alternate',
-      type: 'text/html',
-      href: 'https://www.krautspace.de/'
-    },
-    published: '2014-09-28T19:29:02+00:00',
-    updated: '2014-09-28T19:29:02+00:00',
-    id: 'urn:uuid:CD25CFEB-F33A-1745-6BA7-0CDA44430E89',
-    author: {
-      name: 'spaceapi2rss'
-    },
-    text: '\n     ',
-    summary: 'no summary'
+  generator: {
+    version: 'dev',
+    uri: 'http://ezcomponents.org/docs/tutorials/Feed',
+    text: 'eZ Components Feed'
   },
-    ...
+  logo: 'https://kraut.space/',
+  subtitle: 'Zeigt an ob der Raum geöffnet oder geschlossen ist.',
+  items: [{
+    id: 'https://status.krautspace.de/1477614841',
+    title: 'Krautspace ist seit 02:34 geschlossen',
+    updated: '2016-10-28T00:34:01+00:00',
+    author: { name: 'spaceapi2rss' },
+    link: { href: 'https://kraut.space/' },
+    summary: 'Krautspace ist seit 02:34 geschlossen'
+  }, {
+    id: 'https://status.krautspace.de/1477583941',
+    title: 'Krautspace ist seit 17:59 geöffnet',
+    updated: '2016-10-27T15:59:01+00:00',
+    author: { name: 'spaceapi2rss' },
+    link: { href: 'https://kraut.space/' },
+    summary: 'Krautspace ist seit 17:59 geöffnet'
+  },
+  // ...
   ]
 }
+```
+
+```js
+// Space calendar events in the next ~30 days
+Kraustpace.getEvents( function( error, events ) {
+  console.log( events )
+})
+```
+
+```js
+[
+  {
+    title: 'Junghackertag',
+    date: 2016-10-29T15:00:00.000Z,
+    url: 'https://calcifer.datenknoten.me/termine/junghackertag-5',
+    description: '',
+    tags: [
+      'hackspace',
+      'junghacker',
+      'kinder- und jugendarbeit',
+      'pentabug'
+    ]
+  }, {
+    title: 'Elektronikrunde',
+    date: 2016-10-31T19:30:00.000Z,
+    url: 'https://calcifer.datenknoten.me/termine/719-elektronikrunde',
+    description: 'Zur Elektronikrunde kann man sich konzentriert in unterschiedliche Technikprojekte vertiefen. Wir helfen uns gegenseitig mit Werkzeugen, Materialien und Wissen aus, um unsere Ideen zu verwirklichen oder einfach nur ein defektes Gerät zu reparieren.',
+    tags: [
+      'jena',
+      'elektronik',
+      'löten',
+      'hackspace',
+      'hacken',
+      'drucken',
+      'ätzen',
+      '3d-druck'
+    ]
+  }, {
+    title: 'Repariercafé-Vorbesprechung',
+    date: 2016-11-01T17:30:00.000Z,
+    url: 'https://calcifer.datenknoten.me/termine/repariercafe-vorbesprechung',
+    description: 'Vorbesprechung zum nächsten Repariercafé',
+    tags: [ 'jena', 'plenum', 'repariercafe' ]
+  },
+  // ...
+]
 ```
