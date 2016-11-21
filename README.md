@@ -28,6 +28,81 @@ Examples:
   json    Output machine readable status data as JSON
 ```
 
+**Status**
+```sh
+$ krautspace
+
+[KRAUTSPACE] [CLOSED] (a few seconds ago)
+[STATUS] no human being on location
+
+  Saturday   17:49 - 02:54
+  Saturday   13:54 - 17:24
+  Friday     18:14 - 01:59
+
+```
+
+**Info**
+```sh
+$ krautspace info
+
+[KRAUTSPACE] [CLOSED] (a minute ago)
+[STATUS] no human being on location
+
+  Web             https://kraut.space/
+
+  Twitter         @HackspaceJena
+  Email           office@krautspace.de
+  Mailing List    hackspace-jena@list.lstsrv.org
+  Jabber          krautchan@chat.krautspace.de
+  Identica        krautspace@quitter.se
+
+  Address         Krautgasse 26, 07743 Jena, Germany
+  Location        50.9291968, 11.5824294
+
+```
+
+**Events**
+```sh
+$ krautspace events
+
+  21.11.2016, Monday
+
+    20:30   Elektronikrunde
+            https://calcifer.datenknoten.me/termine/738-elektronikrunde
+            jena, elektronik, löten, hackspace, hacken, drucken, ätzen, 3d-druck
+
+  22.11.2016, Tuesday
+
+    21:20   OpenKraut — Offene Runde im Krautspace
+            https://calcifer.datenknoten.me/termine/739-openkraut-offene-runde-im-krautspace
+            jena, hackspace, hacken, dienstag, offen
+
+  23.11.2016, Wednesday
+
+    20:00   Rollenspielrunde
+            https://calcifer.datenknoten.me/termine/740-rollenspielrunde
+
+
+  24.11.2016, Thursday
+
+    21:20   Linux User Group (LUG) Jena
+            https://calcifer.datenknoten.me/termine/741-linux-user-group-lug-jena
+            linux, hilfe, support, user group
+
+  26.11.2016, Saturday
+
+    16:00   Junghackertag
+            https://calcifer.datenknoten.me/termine/junghackertag-7
+            hackspace, junghacker, kinder- und jugendarbeit, peltier, leselampe
+
+  27.11.2016, Sunday
+
+    15:00   Mitgliederversammlung des Hackspace Jena e.V
+            https://calcifer.datenknoten.me/termine/mitgliederversammlung-des-hackspace-jena-ev
+            jena, hackspace, mitgliederversammlung, vorstandswahlen
+
+```
+
 ## Usage: Library API
 
 ```js
