@@ -149,7 +149,9 @@ function displayStatus() {
   Krautspace.getStatus( function( error, status ) {
     FAIL( error )
     header( status )
-    Krautspace.getFeed( function( error, data ) {
+    var feedURL = status.feeds && status.feeds.wiki &&
+      status.feeds.wiki.url
+    Krautspace.getFeed( feedURL, function( error, data ) {
       FAIL( error )
       feed( data )
     })
