@@ -25,10 +25,12 @@ Examples:
   status  Display short status information (default)
   info    Display verbose information
   events  Display upcoming calendar events
+  feed    Display the wiki feed
   json    Output machine readable status data as JSON
 ```
 
-**Status**
+### Status
+
 ```sh
 $ krautspace
 
@@ -41,7 +43,8 @@ $ krautspace
 
 ```
 
-**Info**
+### Info
+
 ```sh
 $ krautspace info
 
@@ -61,7 +64,8 @@ $ krautspace info
 
 ```
 
-**Events**
+### Events
+
 ```sh
 $ krautspace events
 
@@ -100,6 +104,58 @@ $ krautspace events
     15:00   Mitgliederversammlung des Hackspace Jena e.V
             https://calcifer.datenknoten.me/termine/mitgliederversammlung-des-hackspace-jena-ev
             jena, hackspace, mitgliederversammlung, vorstandswahlen
+
+```
+
+### Wiki
+
+```sh
+$ krautspace feed
+
+[KRAUTSPACE] [CLOSED] (a few seconds ago)
+[STATUS] open for public
+
+ [WIKI FEED]
+
+  02.07.2017, Sunday
+
+    20:48   Was ist bei einem Vorstandswechsel des Vereins zu tun? – bernd
+            https://kraut.space/hswiki:anleitungen:vorstandswechsel
+            Unten ist eine Checkliste, welche Schritte bei einem Vorstandswechsel…
+
+  29.06.2017, Thursday
+
+    08:21   Alternative Orientierungstage (ALOTA) 4.0 – fpunktk
+            https://kraut.space/hswiki:termine:einmalige:2017:alota
+            Wann?
+
+  28.06.2017, Wednesday
+
+    10:59   Kommunikation – fpunktk
+            https://kraut.space/communication
+            E-Mail
+
+  27.06.2017, Tuesday
+
+    22:52   hackbot – qbi
+            https://kraut.space/hswiki:misc:hackbot
+            Derzeit ist der Bot nicht aktiv. Der benötigt eine Überarbeitung.
+
+    19:04   Brettspielerei – bernd
+            https://kraut.space/hswiki:termine:regelmaessige:gesellschaftsspielerei
+            Spielen im Krautspace!
+
+    17:45   Lange Nacht der Wissenschaften 2017 – qbi
+            https://kraut.space/hswiki:termine:einmalige:2017:lndw
+            Diese Wikiseite ist zur Planung der Aktivitäten gedacht. Wir haben be…
+
+    16:09   [Navigation] – qbi
+            https://kraut.space/sidebar
+            Krautspace — Der Hackspace in Jena index
+
+    15:57   Willkommen im Krautspace – qbi
+            https://kraut.space/start
+            Hacker, Bastler und Solche, die es werden wollen: Der Krautspace ist …
 
 ```
 
