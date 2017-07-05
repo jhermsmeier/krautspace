@@ -14,7 +14,7 @@
   "preferGlobal": true,
   "dependencies": {
     "chalk": "^2.0.1",
-    "feedme": "^1.0.0",
+    "feedparser": "^2.2.1",
     "ical-date-parser": "^4.0.0",
     "ical2json": "^1.2.0",
     "moment": "^2.18.1",

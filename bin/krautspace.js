@@ -19,6 +19,7 @@ var options = require( 'yargs' )
   .example( 'status', 'Display short status information (default)' )
   .example( 'info', 'Display verbose information' )
   .example( 'events', 'Display upcoming calendar events' )
+  .example( 'feed', 'Display the wiki feed' )
   .example( 'json', 'Output machine readable status data as JSON' )
   .alias({
     help: 'h',
@@ -98,7 +99,7 @@ function contact( status ) {
 
 }
 
-function feed( data ) {
+function feed( meta, items ) {
 
   var items = data.items.slice( 0, 7 ).map( function( item ) {
     var time = moment( item.updated )
@@ -138,6 +139,50 @@ function feed( data ) {
 
 }
 
+function wikiFeed( meta, items ) {
+
+  var entries = items.filter( function( item ) {
+    return item.description && !/<[^>]+\/>/.test( item.description )
+  }).map( function( item ) {
+    var time = moment( item.date )
+    var description = item.description.split( /\r?\n/g )
+    var title = description.shift()
+    return {
+      title: title,
+      description: description.join( '\n' ).trim(),
+      date: item.date,
+      author: item.author,
+      link: item.link,
+    }
+  })
+
+  var currentDate = null
+
+  entries.forEach( function( entry ) {
+
+    var date = moment( entry.date ).format( 'DD.MM.YYYY, dddd' )
+    var time = moment( entry.date ).format( 'HH:mm' )
+    var description = entry.description.split( '\n' ).shift()
+
+    if( description && description.length > 72 ) {
+      description = description.slice( 0, 69 ) + '…'
+    }
+
+    if( date != currentDate ) {
+      currentDate = date
+      console.log( ' ', color.green( currentDate ) )
+      console.log( '' )
+    }
+
+    console.log( '   ', color.grey( time ), ' ', color.reset( entry.title ), color.grey( '– ' + entry.author ) )
+    console.log( '           ', color.blue( entry.link ) )
+    console.log( '           ', color.grey( description ) )
+    console.log( '' )
+
+  })
+
+}
+
 function displayJSON() {
   Krautspace.getStatus( function( error, status ) {
     FAIL( error )
@@ -151,9 +196,25 @@ function displayStatus() {
     header( status )
     var feedURL = status.feeds && status.feeds.wiki &&
       status.feeds.wiki.url
-    Krautspace.getFeed( feedURL, function( error, data ) {
+    Krautspace.getFeed( function( error, meta, items ) {
       FAIL( error )
-      feed( data )
+      feed( meta, items )
+    })
+  })
+}
+
+function displayWikiFeed() {
+  Krautspace.getStatus( function( error, status ) {
+    FAIL( error )
+    header( status )
+    console.log( '' )
+    console.log( ' ' + color.yellow( '[WIKI FEED]' ) )
+    console.log( '' )
+    var feedURL = status.feeds && status.feeds.wiki &&
+      status.feeds.wiki.url
+    Krautspace.getFeed( feedURL, function( error, meta, items ) {
+      FAIL( error )
+      wikiFeed( meta, items )
     })
   })
 }
@@ -203,5 +264,6 @@ switch( argv._.shift() ) {
   case 'json': displayJSON(); break
   case 'info': displayInfo(); break
   case 'events': displayEvents(); break
+  case 'feed': displayWikiFeed(); break
   default: displayStatus(); break
 }
