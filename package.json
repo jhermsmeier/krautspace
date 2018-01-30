@@ -1,6 +1,6 @@
 {
   "name": "krautspace",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "API and CLI for the Krautspace Hackerspace in Jena",
   "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de)",
   "license": "MIT",
