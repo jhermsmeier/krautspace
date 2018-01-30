@@ -101,7 +101,7 @@ function contact( status ) {
 
 function feed( meta, items ) {
 
-  var items = data.items.slice( 0, 7 ).map( function( item ) {
+  var items = items.slice( 0, 7 ).map( function( item ) {
     var time = moment( item.updated )
     var open = /geöffnet/i.test( item.title )
     return { open: open, time: time }
